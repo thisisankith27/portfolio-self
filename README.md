@@ -76,7 +76,7 @@ $pdo = new PDO("mysql:host=127.0.0.1;dbname=portfolio_db;charset=utf8mb4", "root
 
 
 6. Run the site locally:
-http://localhost/portfolio/index.xhtml
+http://localhost/portfolio-self/index.php
 
 GitHub Pages Deployment
 
@@ -87,5 +87,6 @@ Author
 
 Ankith H S
 Computer Science & Engineering Student
+
 
 
