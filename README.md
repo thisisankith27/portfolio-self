@@ -81,10 +81,11 @@ http://localhost/portfolio/index.xhtml
 GitHub Pages Deployment
 
 Link:
-https://Anki-2706.github.io/portfolio/
+https://thisisankith27.github.io/portfolio-self/
 
 Author
 
 Ankith H S
 Computer Science & Engineering Student
+
 
