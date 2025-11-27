@@ -1,13 +1,3 @@
-<?php
-// index.php
-session_start();
-
-// CSRF token
-if (empty($_SESSION['csrf_token'])) {
-    $_SESSION['csrf_token'] = bin2hex(random_bytes(24));
-}
-$csrf_token = $_SESSION['csrf_token'];
-?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -37,20 +27,6 @@ $csrf_token = $_SESSION['csrf_token'];
   </header>
 
   <main>
-
-<?php if(isset($_GET['sent']) && $_GET['sent']==1): ?>
-  <div class="wrap" style="margin-top:18px;">
-    <div class="form-banner success">
-      Message sent successfully — thank you!
-    </div>
-  </div>
-<?php elseif(isset($_GET['sent']) && $_GET['sent']==0): ?>
-  <div class="wrap" style="margin-top:18px;">
-    <div class="form-banner error">
-      Could not send message. Try again later.
-    </div>
-  </div>
-<?php endif; ?>
 
     <section class="hero" id="home">
       <div class="wrap hero-grid">
@@ -114,7 +90,7 @@ $csrf_token = $_SESSION['csrf_token'];
         <article class="project-card">
           <div class="project-body">
             <h3 class="project-title">Portfolio Website</h3>
-            <p class="project-desc">A responsive single-page portfolio built with HTML, CSS and vanilla JavaScript. Includes a PHP + MySQL contact form for server hosting.</p>
+            <p class="project-desc">A responsive single-page portfolio built with HTML, CSS and vanilla JavaScript. Previously used PHP backend for contact form.</p>
           </div>
         </article>
       </div>
@@ -155,7 +131,8 @@ $csrf_token = $_SESSION['csrf_token'];
           </div>
         </div>
 
-        <form class="contact-form-new" method="post" action="contact.php" novalidate>
+        <!-- NEW FORM (Formspree) -->
+        <form class="contact-form-new" method="POST" action="https://formspree.io/f/YOUR_FORM_ID" novalidate>
           <label for="name">Your Name</label>
           <input id="name" type="text" name="name" required>
 
@@ -165,14 +142,10 @@ $csrf_token = $_SESSION['csrf_token'];
           <label for="message">Your Message</label>
           <textarea id="message" name="message" rows="6" required></textarea>
 
-          <!-- honeypot (hide with CSS) -->
           <div style="display:none !important;">
             <label for="hp">Leave this field empty</label>
             <input id="hp" name="hp" type="text" autocomplete="off">
           </div>
-
-          <!-- CSRF -->
-          <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($csrf_token, ENT_QUOTES, 'UTF-8'); ?>">
 
           <button type="submit" class="btn btn-solid">Send Message</button>
         </form>
@@ -188,3 +161,4 @@ $csrf_token = $_SESSION['csrf_token'];
   <script src="assets/js/script.js"></script>
 </body>
 </html>
+
